@@ -50,7 +50,7 @@ exports.list = async (req, res) => {
 exports.read = async (req, res) => {
     try {
         const id = req.params.id;
-        const post = await Post.findById(id);
+        const post = await Post.findById(id).populate("author");
         if (post) {
             return apiResponse.successResponseWithData(res, 'Post get Successful!', post);
         }
